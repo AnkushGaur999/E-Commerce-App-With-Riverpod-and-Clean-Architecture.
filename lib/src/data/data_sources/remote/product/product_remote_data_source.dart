@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:plux/src/core/errors/network_exception.dart';
 import 'package:plux/src/core/network/client/network_client.dart';
 import 'package:plux/src/core/utils/data_state.dart';
 import 'package:plux/src/data/models/product/product_model.dart';
@@ -11,7 +10,6 @@ abstract class ProductRemoteDataSource {
 
   Future<DataState<List<ProductModel>>> searchProducts(String query);
 }
-
 
 class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
   final NetworkClient client;
@@ -28,10 +26,8 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
           .toList();
 
       return Success(data: products);
-    } on SocketException catch (_) {
-      return Failure(error: "No Internet connection!");
     } catch (e) {
-      return Failure(error: e.toString());
+      return Failure(error: NetworkException.fromException(e).message);
     }
   }
 
@@ -43,10 +39,8 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
       final product = ProductModel.fromJson(response.data);
 
       return Success(data: product);
-    } on SocketException catch (_) {
-      return Failure(error: "No Internet connection!");
     } catch (e) {
-      return Failure(error: e.toString());
+      return Failure(error: NetworkException.fromException(e).message);
     }
   }
 
@@ -63,10 +57,8 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
           .toList();
 
       return Success(data: products);
-    } on SocketException catch (_) {
-      return Failure(error: "No Internet connection!");
     } catch (e) {
-      return Failure(error: e.toString());
+      return Failure(error: NetworkException.fromException(e).message);
     }
   }
 }

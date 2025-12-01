@@ -19,6 +19,7 @@ dependencies:
   riverpod_annotation: ^3.0.3
   hooks_riverpod: ^3.0.3
   skeletonizer: ^2.1.0+1
+  flutter_secure_storage: ^9.2.4
 
 
 dev_dependencies:

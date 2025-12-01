@@ -50,6 +50,54 @@ final class NetworkClientProvider
 
 String _$networkClientHash() => r'5798aa81aac47d529bee9048150b2fb906605212';
 
+@ProviderFor(authRemoteDataSource)
+const authRemoteDataSourceProvider = AuthRemoteDataSourceProvider._();
+
+final class AuthRemoteDataSourceProvider
+    extends
+        $FunctionalProvider<
+          AuthRemoteDataSource,
+          AuthRemoteDataSource,
+          AuthRemoteDataSource
+        >
+    with $Provider<AuthRemoteDataSource> {
+  const AuthRemoteDataSourceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'authRemoteDataSourceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$authRemoteDataSourceHash();
+
+  @$internal
+  @override
+  $ProviderElement<AuthRemoteDataSource> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  AuthRemoteDataSource create(Ref ref) {
+    return authRemoteDataSource(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AuthRemoteDataSource value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AuthRemoteDataSource>(value),
+    );
+  }
+}
+
+String _$authRemoteDataSourceHash() =>
+    r'c1f5944125d7205a8eaad50ee300cad3c43e5e3d';
+
 @ProviderFor(productRemoteDataSource)
 const productRemoteDataSourceProvider = ProductRemoteDataSourceProvider._();
 
@@ -98,6 +146,47 @@ final class ProductRemoteDataSourceProvider
 String _$productRemoteDataSourceHash() =>
     r'1420546ae4e4593d88bad52831672dd5604f454c';
 
+@ProviderFor(authRepository)
+const authRepositoryProvider = AuthRepositoryProvider._();
+
+final class AuthRepositoryProvider
+    extends $FunctionalProvider<AuthRepository, AuthRepository, AuthRepository>
+    with $Provider<AuthRepository> {
+  const AuthRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'authRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$authRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<AuthRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  AuthRepository create(Ref ref) {
+    return authRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AuthRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AuthRepository>(value),
+    );
+  }
+}
+
+String _$authRepositoryHash() => r'674d8bbd7f34da55d2f40c98845b4d5f2d2d36e8';
+
 @ProviderFor(productRepository)
 const productRepositoryProvider = ProductRepositoryProvider._();
 
@@ -144,6 +233,52 @@ final class ProductRepositoryProvider
 }
 
 String _$productRepositoryHash() => r'5f777787eb8ae58ba08c1f3bddf9ef21bf18ca25';
+
+@ProviderFor(userLoginUseCase)
+const userLoginUseCaseProvider = UserLoginUseCaseProvider._();
+
+final class UserLoginUseCaseProvider
+    extends
+        $FunctionalProvider<
+          UserLoginUseCase,
+          UserLoginUseCase,
+          UserLoginUseCase
+        >
+    with $Provider<UserLoginUseCase> {
+  const UserLoginUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'userLoginUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$userLoginUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<UserLoginUseCase> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  UserLoginUseCase create(Ref ref) {
+    return userLoginUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UserLoginUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UserLoginUseCase>(value),
+    );
+  }
+}
+
+String _$userLoginUseCaseHash() => r'78f25bfe68b12d1a00632a41f76c2809d211957e';
 
 @ProviderFor(getAllProductsUseCase)
 const getAllProductsUseCaseProvider = GetAllProductsUseCaseProvider._();

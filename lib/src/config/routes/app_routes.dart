@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:plux/src/core/utils/route_observer.dart';
 import 'package:plux/src/data/models/product/product_model.dart';
+import 'package:plux/src/presentation/views/auth/login/login_screen.dart';
 import 'package:plux/src/presentation/views/dashboard/dashboard_screen.dart';
 import 'package:plux/src/presentation/views/product/all_product_screen.dart';
 import 'package:plux/src/presentation/views/product/product_details_screen.dart';
@@ -8,12 +10,14 @@ import 'package:plux/src/presentation/views/splash/splash_screen.dart';
 
 class AppRoutes {
   static const String splash = "splash";
+  static const String login = "login";
   static const String dashboard = 'dashboard';
   static const String allProducts = 'all-products';
   static const String searchProducts = 'search-products';
   static const String productDetails = 'product-details';
 
   static const String _splash = "/";
+  static const String _login = "/login";
   static const String _dashboard = '/dashboard';
   static const String _allProducts = '/all-products';
   static const String _searchProducts = '/search-products';
@@ -21,11 +25,18 @@ class AppRoutes {
 
   static final GoRouter router = GoRouter(
     initialLocation: _splash,
+    observers: [RouteObserver()],
     routes: [
       GoRoute(
         name: splash,
         path: _splash,
         builder: (context, state) => const SplashScreen(),
+      ),
+
+      GoRoute(
+        name: login,
+        path: _login,
+        builder: (context, state) => LoginScreen(),
       ),
 
       GoRoute(

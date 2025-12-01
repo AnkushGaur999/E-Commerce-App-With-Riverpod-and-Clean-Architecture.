@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:plux/src/core/errors/network_exception.dart';
 import 'package:plux/src/core/network/interceptors/auth_interceptor.dart';
 
 class NetworkClient {
@@ -11,8 +12,9 @@ class NetworkClient {
       ..options.baseUrl = dotenv.get("BASE_URL")
       ..options.connectTimeout = Duration(seconds: 30)
       ..options.receiveTimeout = Duration(seconds: 30)
-      ..options.sendTimeout = Duration(seconds: 30)
-      ..interceptors.add(AuthInterceptor());
+      ..options.sendTimeout = Duration(seconds: 30);
+
+    _dio.interceptors.add(AuthInterceptor(dio: _dio));
   }
 
   factory NetworkClient() {
@@ -29,7 +31,7 @@ class NetworkClient {
         queryParameters: queryParameters,
       );
       return response;
-    } on DioException catch (_) {
+    } catch (e) {
       rethrow;
     }
   }
@@ -41,7 +43,7 @@ class NetworkClient {
     try {
       final response = await _dio.post(endPoint, data: data);
       return response;
-    } on DioException catch (_) {
+    } catch (e) {
       rethrow;
     }
   }

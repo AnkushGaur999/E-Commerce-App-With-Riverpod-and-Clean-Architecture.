@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plux/src/config/generated/assets.gen.dart';
 import 'package:plux/src/config/routes/app_routes.dart';
+import 'package:plux/src/core/services/token_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,8 +16,12 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 2)).then((value) {
-      if (mounted) context.goNamed(AppRoutes.allProducts);
+    Future.delayed(Duration(seconds: 2)).then((value) async {
+      if (await TokenService.isUsedLoggedIn() == true) {
+        if (mounted) context.goNamed(AppRoutes.allProducts);
+      } else {
+        if (mounted) context.goNamed(AppRoutes.login);
+      }
     });
   }
 

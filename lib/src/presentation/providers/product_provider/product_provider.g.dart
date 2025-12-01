@@ -33,7 +33,7 @@ final class AllProductProvider
   AllProduct create() => AllProduct();
 }
 
-String _$allProductHash() => r'ab3b7f7a5f667e5f07a51916dd716410aa5b5faf';
+String _$allProductHash() => r'2e100fd7037f41f8e31f9dd186c135a9278fb2e2';
 
 abstract class _$AllProduct extends $AsyncNotifier<AllProductState> {
   FutureOr<AllProductState> build();
@@ -78,7 +78,7 @@ final class SearchProductProvider
   SearchProduct create() => SearchProduct();
 }
 
-String _$searchProductHash() => r'7d9ed059b77e44389e7c32d3fbb75d59c77106a8';
+String _$searchProductHash() => r'f70912e5d1fcc039210df3f6b5484c8f5b1c0d1e';
 
 abstract class _$SearchProduct extends $AsyncNotifier<SearchProductState?> {
   FutureOr<SearchProductState?> build();

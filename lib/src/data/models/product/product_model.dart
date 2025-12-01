@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:plux/src/data/models/product/reviews.dart';
-
 import 'dimensions.dart';
 import 'meta.dart';
 
