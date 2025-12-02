@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plux/src/data/models/product/product_model.dart';
 import 'package:plux/src/config/routes/app_routes.dart';
-import 'package:plux/src/presentation/providers/product_provider/product_provider.dart';
+import 'package:plux/src/presentation/common_widgets/error_state_view.dart';
+import 'package:plux/src/presentation/providers/product/product_provider.dart';
 import 'package:plux/src/presentation/views/product/widgets/product_tile.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -33,9 +34,7 @@ class AllProductScreen extends StatelessWidget {
 
                 return productsAsync.when(
                   data: (state) => RefreshIndicator(
-                    onRefresh: () async {
-                      await productNotifier.getAllProducts();
-                    },
+                    onRefresh: () => productNotifier.getAllProducts(),
                     child: ListView.builder(
                       itemCount: state.allProducts.length,
                       itemBuilder: (context, index) {
@@ -62,8 +61,11 @@ class AllProductScreen extends StatelessWidget {
                       ).toList(),
                     ),
                   ),
-                  error: (error, stackTrace) =>
-                      Center(child: Text('Error: $error')),
+                  error: (error, stackTrace) => ErrorStateView(
+                    message: error.toString(),
+                    onRetry: () =>
+                        ref.read(allProductProvider.notifier).getAllProducts(),
+                  ),
                 );
               },
             ),
@@ -158,3 +160,5 @@ class _AnimatedProductTileState extends State<_AnimatedProductTile>
     );
   }
 }
+
+

@@ -1,18 +1,12 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class TokenService {
+abstract class TokenService {
   // Constants for storage keys
   static const String _accessTokenKey = 'access_token';
   static const String _refreshTokenKey = 'refresh_token';
 
   // Secure storage instance
   static final FlutterSecureStorage _storage = const FlutterSecureStorage();
-
-  static final TokenService _instance = TokenService._private();
-
-  TokenService._private();
-
-  factory TokenService() => _instance;
 
   // --- GETTERS ---
 
@@ -35,13 +29,11 @@ class TokenService {
   }
 
   static Future<void> clearTokens() async {
-    // Clear both tokens upon logout
     await _storage.delete(key: _accessTokenKey);
     await _storage.delete(key: _refreshTokenKey);
-    // You might also notify the UI to navigate to the Login screen here
   }
 
-  static Future<bool?> isUsedLoggedIn() async {
+  static Future<bool> isUsedLoggedIn() async {
     return await _storage.containsKey(key: _accessTokenKey) ||
         await _storage.containsKey(key: _refreshTokenKey);
   }

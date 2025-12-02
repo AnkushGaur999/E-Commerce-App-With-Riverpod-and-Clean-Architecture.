@@ -14,11 +14,41 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/icons/facebook.png');
+
+  /// File path: assets/icons/google.png
+  AssetGenImage get google => const AssetGenImage('assets/icons/google.png');
+
+  /// File path: assets/icons/instagram.png
+  AssetGenImage get instagram =>
+      const AssetGenImage('assets/icons/instagram.png');
+
+  /// File path: assets/icons/linkedin.png
+  AssetGenImage get linkedin =>
+      const AssetGenImage('assets/icons/linkedin.png');
+
   /// File path: assets/icons/plux.png
   AssetGenImage get plux => const AssetGenImage('assets/icons/plux.png');
 
+  /// File path: assets/icons/twitter.png
+  AssetGenImage get twitter => const AssetGenImage('assets/icons/twitter.png');
+
+  /// File path: assets/icons/whatsapp.png
+  AssetGenImage get whatsapp =>
+      const AssetGenImage('assets/icons/whatsapp.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [plux];
+  List<AssetGenImage> get values => [
+    facebook,
+    google,
+    instagram,
+    linkedin,
+    plux,
+    twitter,
+    whatsapp,
+  ];
 }
 
 class $AssetsImagesGen {

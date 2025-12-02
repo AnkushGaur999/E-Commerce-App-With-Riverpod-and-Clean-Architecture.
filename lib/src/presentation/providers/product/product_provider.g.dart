@@ -33,7 +33,7 @@ final class AllProductProvider
   AllProduct create() => AllProduct();
 }
 
-String _$allProductHash() => r'2e100fd7037f41f8e31f9dd186c135a9278fb2e2';
+String _$allProductHash() => r'f57c0277e697a3cc6c123b22ba23407fd7bf7f17';
 
 abstract class _$AllProduct extends $AsyncNotifier<AllProductState> {
   FutureOr<AllProductState> build();

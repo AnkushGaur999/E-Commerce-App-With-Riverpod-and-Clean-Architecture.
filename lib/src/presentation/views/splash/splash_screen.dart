@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plux/src/config/generated/assets.gen.dart';
 import 'package:plux/src/config/routes/app_routes.dart';
@@ -17,8 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(Duration(seconds: 2)).then((value) async {
+
       if (await TokenService.isUsedLoggedIn() == true) {
-        if (mounted) context.goNamed(AppRoutes.allProducts);
+        if (mounted) context.goNamed(AppRoutes.dashboard);
       } else {
         if (mounted) context.goNamed(AppRoutes.login);
       }

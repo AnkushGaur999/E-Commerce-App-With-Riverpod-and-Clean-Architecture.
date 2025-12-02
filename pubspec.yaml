@@ -1,7 +1,8 @@
 name: plux
 description: "A new Flutter project."
-publish_to: 'none'
 
+publish_to: 'none'
+version: 1.0.0+1
 
 environment:
   sdk: ^3.10.0
@@ -20,6 +21,8 @@ dependencies:
   hooks_riverpod: ^3.0.3
   skeletonizer: ^2.1.0+1
   flutter_secure_storage: ^9.2.4
+  google_fonts: ^6.3.3
+  connectivity_plus: ^7.0.0
 
 
 dev_dependencies:

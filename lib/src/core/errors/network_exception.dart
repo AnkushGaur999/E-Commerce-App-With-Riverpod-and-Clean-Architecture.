@@ -7,7 +7,7 @@ class NetworkException {
 
   NetworkException.fromException(Object exception) {
     if (exception is SocketException) {
-      message = "No internet connection";
+      message = "No internet connection! 😔";
       return;
     } else if (exception is DioException) {
       switch (exception.type) {
@@ -32,12 +32,16 @@ class NetworkException {
         case DioExceptionType.unknown:
           message = "Unexpected error occurred";
           break;
+
+        case DioExceptionType.connectionError:
+          message = "No internet connection! 😔";
+          break;
         default:
           message = "Something went wrong";
           break;
       }
     } else {
-      message = "Something went wrong! Please try again........";
+      message = "Something went wrong!\nPlease try again";
     }
   }
 

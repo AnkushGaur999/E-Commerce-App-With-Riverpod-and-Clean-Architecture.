@@ -88,7 +88,7 @@ class _ProductGalleryState extends State<ProductGallery> {
                   ),
                 );
               },
-              separatorBuilder: (_, __) => const SizedBox(width: 12),
+              separatorBuilder: (_, _) => const SizedBox(width: 12),
               itemCount: widget.gallery.length,
             ),
           ),

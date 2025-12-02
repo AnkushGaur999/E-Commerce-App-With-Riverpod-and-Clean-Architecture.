@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:plux/src/core/errors/network_exception.dart';
 import 'package:plux/src/core/network/client/network_client.dart';
 import 'package:plux/src/core/utils/data_state.dart';

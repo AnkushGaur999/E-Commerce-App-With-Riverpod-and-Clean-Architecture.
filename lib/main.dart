@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plux/src/config/routes/app_routes.dart';
 import 'package:plux/src/core/constants/app_colors.dart';
 
@@ -25,6 +26,11 @@ class MyApp extends StatelessWidget {
       title: 'Plux',
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        textTheme: GoogleFonts.notoSansTextTheme(),
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.primaryColor,
+          foregroundColor: AppColors.white,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             minimumSize: WidgetStatePropertyAll(Size(172, 52)),

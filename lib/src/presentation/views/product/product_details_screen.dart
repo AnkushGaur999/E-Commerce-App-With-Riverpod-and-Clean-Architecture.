@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plux/src/core/constants/app_colors.dart';
 import 'package:plux/src/data/models/product/product_model.dart';
 import 'package:plux/src/presentation/views/product/widgets/info_chip.dart';
 import 'package:plux/src/presentation/views/product/widgets/price_chip.dart';
@@ -180,7 +181,7 @@ class ProductDetailsScreen extends StatelessWidget {
                               .map(
                                 (tag) => Chip(
                                   label: Text(tag),
-                                  backgroundColor: colorScheme.surfaceVariant
+                                  backgroundColor: colorScheme.surfaceContainerHighest
                                       .withValues(alpha: 0.5),
                                 ),
                               )
@@ -239,10 +240,17 @@ class ProductDetailsScreen extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: FilledButton.icon(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(AppColors.primaryColor),
+              padding: WidgetStatePropertyAll(EdgeInsets.all(14)),
+              shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(16)
+              ))
+            ),
             onPressed: () {},
             icon: const Icon(Icons.shopping_cart_checkout_rounded),
             label: Text(
-              'Add to cart • $priceText',
+              'Add To Cart • $priceText',
               style: theme.textTheme.titleMedium?.copyWith(
                 color: theme.colorScheme.onPrimary,
                 fontWeight: FontWeight.w600,

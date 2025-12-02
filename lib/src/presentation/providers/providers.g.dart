@@ -96,7 +96,7 @@ final class AuthRemoteDataSourceProvider
 }
 
 String _$authRemoteDataSourceHash() =>
-    r'c1f5944125d7205a8eaad50ee300cad3c43e5e3d';
+    r'e8c9295f551d48c06215de40787f68e0d47f2b94';
 
 @ProviderFor(productRemoteDataSource)
 const productRemoteDataSourceProvider = ProductRemoteDataSourceProvider._();
@@ -144,7 +144,103 @@ final class ProductRemoteDataSourceProvider
 }
 
 String _$productRemoteDataSourceHash() =>
-    r'1420546ae4e4593d88bad52831672dd5604f454c';
+    r'ada4be6ce9df25089414bc09411996f9ebece3bc';
+
+@ProviderFor(categoryRemoteDataSource)
+const categoryRemoteDataSourceProvider = CategoryRemoteDataSourceProvider._();
+
+final class CategoryRemoteDataSourceProvider
+    extends
+        $FunctionalProvider<
+          CategoryRemoteDataSource,
+          CategoryRemoteDataSource,
+          CategoryRemoteDataSource
+        >
+    with $Provider<CategoryRemoteDataSource> {
+  const CategoryRemoteDataSourceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'categoryRemoteDataSourceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$categoryRemoteDataSourceHash();
+
+  @$internal
+  @override
+  $ProviderElement<CategoryRemoteDataSource> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  CategoryRemoteDataSource create(Ref ref) {
+    return categoryRemoteDataSource(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CategoryRemoteDataSource value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CategoryRemoteDataSource>(value),
+    );
+  }
+}
+
+String _$categoryRemoteDataSourceHash() =>
+    r'023262d3b4581fdfc585f53f6def83270ac7af34';
+
+@ProviderFor(cartRemoteDataSource)
+const cartRemoteDataSourceProvider = CartRemoteDataSourceProvider._();
+
+final class CartRemoteDataSourceProvider
+    extends
+        $FunctionalProvider<
+          CartRemoteDataSource,
+          CartRemoteDataSource,
+          CartRemoteDataSource
+        >
+    with $Provider<CartRemoteDataSource> {
+  const CartRemoteDataSourceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cartRemoteDataSourceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cartRemoteDataSourceHash();
+
+  @$internal
+  @override
+  $ProviderElement<CartRemoteDataSource> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  CartRemoteDataSource create(Ref ref) {
+    return cartRemoteDataSource(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CartRemoteDataSource value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CartRemoteDataSource>(value),
+    );
+  }
+}
+
+String _$cartRemoteDataSourceHash() =>
+    r'38354e2362320db4e48303f4e5cc6ba57bf8c8b1';
 
 @ProviderFor(authRepository)
 const authRepositoryProvider = AuthRepositoryProvider._();
@@ -185,7 +281,48 @@ final class AuthRepositoryProvider
   }
 }
 
-String _$authRepositoryHash() => r'674d8bbd7f34da55d2f40c98845b4d5f2d2d36e8';
+String _$authRepositoryHash() => r'2bb4d832e7e830bcb5d1c9a17d87e0207d904919';
+
+@ProviderFor(cartRepository)
+const cartRepositoryProvider = CartRepositoryProvider._();
+
+final class CartRepositoryProvider
+    extends $FunctionalProvider<CartRepository, CartRepository, CartRepository>
+    with $Provider<CartRepository> {
+  const CartRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cartRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cartRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<CartRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  CartRepository create(Ref ref) {
+    return cartRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CartRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CartRepository>(value),
+    );
+  }
+}
+
+String _$cartRepositoryHash() => r'2abb6661f5cf17ff842fd1fc76608477eb59c4f0';
 
 @ProviderFor(productRepository)
 const productRepositoryProvider = ProductRepositoryProvider._();
@@ -232,7 +369,55 @@ final class ProductRepositoryProvider
   }
 }
 
-String _$productRepositoryHash() => r'5f777787eb8ae58ba08c1f3bddf9ef21bf18ca25';
+String _$productRepositoryHash() => r'03b51e55e31f6dceaff4cfd0c70b18b3cfeb57a4';
+
+@ProviderFor(categoryRepository)
+const categoryRepositoryProvider = CategoryRepositoryProvider._();
+
+final class CategoryRepositoryProvider
+    extends
+        $FunctionalProvider<
+          CategoryRepository,
+          CategoryRepository,
+          CategoryRepository
+        >
+    with $Provider<CategoryRepository> {
+  const CategoryRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'categoryRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$categoryRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<CategoryRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  CategoryRepository create(Ref ref) {
+    return categoryRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CategoryRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<CategoryRepository>(value),
+    );
+  }
+}
+
+String _$categoryRepositoryHash() =>
+    r'ee18458c471ef34e38819876bbe711ddee892031';
 
 @ProviderFor(userLoginUseCase)
 const userLoginUseCaseProvider = UserLoginUseCaseProvider._();
@@ -278,7 +463,55 @@ final class UserLoginUseCaseProvider
   }
 }
 
-String _$userLoginUseCaseHash() => r'78f25bfe68b12d1a00632a41f76c2809d211957e';
+String _$userLoginUseCaseHash() => r'89941c082f6fd36fa1b9ef1121e85dbbdd9d26a2';
+
+@ProviderFor(getAllCategoryUseCase)
+const getAllCategoryUseCaseProvider = GetAllCategoryUseCaseProvider._();
+
+final class GetAllCategoryUseCaseProvider
+    extends
+        $FunctionalProvider<
+          GetAllCategoryUseCase,
+          GetAllCategoryUseCase,
+          GetAllCategoryUseCase
+        >
+    with $Provider<GetAllCategoryUseCase> {
+  const GetAllCategoryUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'getAllCategoryUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$getAllCategoryUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<GetAllCategoryUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  GetAllCategoryUseCase create(Ref ref) {
+    return getAllCategoryUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GetAllCategoryUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GetAllCategoryUseCase>(value),
+    );
+  }
+}
+
+String _$getAllCategoryUseCaseHash() =>
+    r'5327ac0cc5f0d9e40128749b2a825e7d1b7784e8';
 
 @ProviderFor(getAllProductsUseCase)
 const getAllProductsUseCaseProvider = GetAllProductsUseCaseProvider._();
@@ -326,7 +559,55 @@ final class GetAllProductsUseCaseProvider
 }
 
 String _$getAllProductsUseCaseHash() =>
-    r'7416567949c4c2d82a8c5779fbdbcedf97d80d92';
+    r'30013769191cad380102ba55ce37ee02be48d914';
+
+@ProviderFor(getCartItemsUseCase)
+const getCartItemsUseCaseProvider = GetCartItemsUseCaseProvider._();
+
+final class GetCartItemsUseCaseProvider
+    extends
+        $FunctionalProvider<
+          GetCartItemsUseCase,
+          GetCartItemsUseCase,
+          GetCartItemsUseCase
+        >
+    with $Provider<GetCartItemsUseCase> {
+  const GetCartItemsUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'getCartItemsUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$getCartItemsUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<GetCartItemsUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  GetCartItemsUseCase create(Ref ref) {
+    return getCartItemsUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GetCartItemsUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GetCartItemsUseCase>(value),
+    );
+  }
+}
+
+String _$getCartItemsUseCaseHash() =>
+    r'76c0696aea2cfdf560466fc50e4b4f9f7df5060a';
 
 @ProviderFor(getProductDetailsUseCase)
 const getProductDetailsUseCaseProvider = GetProductDetailsUseCaseProvider._();
@@ -374,7 +655,7 @@ final class GetProductDetailsUseCaseProvider
 }
 
 String _$getProductDetailsUseCaseHash() =>
-    r'e6d08ff15043a6beff14989d973d0a477f49a59e';
+    r'53913ea63740f5e0459208f5c79311e5243c7b9e';
 
 @ProviderFor(searchProductUseCase)
 const searchProductUseCaseProvider = SearchProductUseCaseProvider._();
@@ -422,4 +703,4 @@ final class SearchProductUseCaseProvider
 }
 
 String _$searchProductUseCaseHash() =>
-    r'46022b6cd92e93b2a343b452a8cd1a230992533e';
+    r'7c8f4229d3ff59824477cd1e6ac81d53b010a17f';

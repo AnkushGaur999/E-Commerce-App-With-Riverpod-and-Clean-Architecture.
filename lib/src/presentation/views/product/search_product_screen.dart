@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plux/src/config/routes/app_routes.dart';
-import 'package:plux/src/presentation/providers/product_provider/product_provider.dart';
+import 'package:plux/src/presentation/providers/product/product_provider.dart';
 
 class SearchProductScreen extends ConsumerStatefulWidget {
   const SearchProductScreen({super.key});
@@ -51,20 +51,13 @@ class _SearchProductScreenState extends ConsumerState<SearchProductScreen> {
     return Scaffold(
       appBar: AppBar(title: _searchBar()),
 
-      body: Consumer(
-        builder: (context, ref, child) {
-          final searchProductsAsync = ref.watch(searchProductProvider);
-
-          // final searchProductNotifier = ref.read(
-          //   searchProductProvider.notifier,
-          // );
-
-          return searchProductsAsync.when(
+      body: ref
+          .watch(searchProductProvider)
+          .when(
             data: (value) {
               if (value!.products.isEmpty) {
-                return Center(child: Text("Search Product"));
+                return const Center(child: Text("Search Product"));
               }
-
               return ListView.builder(
                 itemCount: value.products.length,
                 itemBuilder: (context, index) {
@@ -79,11 +72,10 @@ class _SearchProductScreenState extends ConsumerState<SearchProductScreen> {
                 },
               );
             },
-            error: (error, stacktrace) => SizedBox(),
-            loading: () => CircularProgressIndicator(),
-          );
-        },
-      ),
+            error: (error, stacktrace) => const SizedBox(),
+            loading: () =>
+                Center(child: const CircularProgressIndicator.adaptive()),
+          ),
     );
   }
 
@@ -92,15 +84,17 @@ class _SearchProductScreenState extends ConsumerState<SearchProductScreen> {
       controller: _searchEditingController,
       focusNode: _searchFocusNode,
       decoration: InputDecoration(
+        filled: true,
         hintText: "Search",
-        fillColor: Colors.black12,
+        hintStyle: TextStyle(color: Colors.grey.shade500),
+        fillColor: Colors.white,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 10.0,
           horizontal: 12.0,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.black12, width: 1),
+          borderSide: const BorderSide(color: Colors.white, width: 1),
         ),
       ),
 

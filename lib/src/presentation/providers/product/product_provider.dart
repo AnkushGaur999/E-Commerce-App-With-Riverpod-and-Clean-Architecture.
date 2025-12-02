@@ -9,20 +9,15 @@ part 'product_provider.g.dart';
 @riverpod
 class AllProduct extends _$AllProduct {
   @override
-  Future<AllProductState> build() async {
-    try {
-      final result = await _fetchAllProducts();
+  FutureOr<AllProductState> build() async {
+    final result = await _fetchAllProducts();
 
-      if (result is Success<List<ProductModel>> && result.data != null) {
-        return AllProductState(allProducts: result.data!);
-      } else {
-        throw Exception(result.error ?? "Failed to load products");
-      }
-    } catch (e) {
-      throw Exception("Error loading products: $e");
+    if (result is Success<List<ProductModel>> && result.data != null) {
+      return AllProductState(allProducts: result.data!);
+    } else {
+      throw result.error ?? "Failed to load products";
     }
   }
-
 
   Future<void> getAllProducts() async {
     state = await AsyncValue.guard(() async {
@@ -31,7 +26,7 @@ class AllProduct extends _$AllProduct {
       if (result is Success<List<ProductModel>> && result.data != null) {
         return AllProductState(allProducts: result.data!);
       } else {
-        throw Exception(result.error ?? "Failed to refresh products");
+        throw result.error ?? "Failed to refresh products";
       }
     });
   }
@@ -41,7 +36,6 @@ class AllProduct extends _$AllProduct {
     final getAllProductsUseCase = ref.read(getAllProductsUseCaseProvider);
     return await getAllProductsUseCase.invoke();
   }
-
 }
 
 @riverpod
