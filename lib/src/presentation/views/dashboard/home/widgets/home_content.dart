@@ -25,23 +25,11 @@ class HomeContent extends StatelessWidget {
 
           const HomeBanner(),
 
-         const SliverToBoxAdapter(
-            child: Padding(
-              padding:  EdgeInsets.only(top: 25, bottom: 6, left: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Categories",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          SliverToBoxAdapter(
+            child: const SizedBox(height: 30,),
           ),
+
+          SectionHeader(title: "Categories", onTap: (){},),
           CategoryList(categories: value.categories),
 
           const SectionHeader(title: "New Products"),

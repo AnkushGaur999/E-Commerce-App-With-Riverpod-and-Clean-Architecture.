@@ -37,7 +37,7 @@ class HomeAppBar extends StatelessWidget {
       actions: [
         IconButton(
           onPressed: () => context.pushNamed(AppRoutes.notifications),
-          icon: Icon(Icons.notifications, color: Colors.black87),
+          icon: Icon(Icons.notifications, color: Theme.of(context).primaryColor),
         ),
       ],
     );

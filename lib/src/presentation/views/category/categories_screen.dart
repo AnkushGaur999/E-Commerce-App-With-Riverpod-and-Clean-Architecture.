@@ -42,8 +42,8 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen>
                       margin: EdgeInsets.all(10),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: _getRandomColor(),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
+                        color: Theme.of(context).cardColor,
                         gradient: LinearGradient(
                           colors: [_getRandomColor(), _getRandomColor()],
                         ),
@@ -75,6 +75,7 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen>
   }
 
   Color _getRandomColor() {
+
     return Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF);
   }
 }

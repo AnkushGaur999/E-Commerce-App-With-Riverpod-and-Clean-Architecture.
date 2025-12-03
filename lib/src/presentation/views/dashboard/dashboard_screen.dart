@@ -29,11 +29,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       _currentPageIndex = index;
     });
 
-    _pageController.animateToPage(
-      _currentPageIndex,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.bounceIn,
-    );
+    _pageController.jumpToPage(_currentPageIndex);
+
   }
 
   @override
@@ -42,18 +39,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: PageView(
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
+        onPageChanged: (index) => setState(() {
+          _currentPageIndex = index;
+        }),
         children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPageIndex,
         onTap: (index) => _bottomNavTap(index),
-        selectedItemColor: AppColors.primaryColor,
-        selectedLabelStyle: TextStyle(
-          color: AppColors.primaryColor,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedItemColor: Colors.grey,
-        items: [
+        backgroundColor: Theme.of(
+          context,
+        ).bottomNavigationBarTheme.backgroundColor,
+        selectedItemColor: Theme.of(context).brightness == Brightness.light
+            ? AppColors.primaryColor
+            : AppColors.white,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedItemColor: Theme.of(
+          context,
+        ).textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
+        type: BottomNavigationBarType.fixed,
+        items: const [
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(Icons.home_rounded),

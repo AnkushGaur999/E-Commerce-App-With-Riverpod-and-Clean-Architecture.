@@ -1,4 +1,5 @@
 import 'package:plux/src/core/network/client/network_client.dart';
+import 'package:plux/src/core/storage/local_storage.dart';
 import 'package:plux/src/data/data_sources/remote/auth/auth_remote_data_source.dart';
 import 'package:plux/src/data/data_sources/remote/cart/cart_remote_data_source.dart';
 import 'package:plux/src/data/data_sources/remote/category/category_remote_data_source.dart';
@@ -22,6 +23,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'providers.g.dart';
 
 @riverpod
+LocalStorage localStorage(Ref ref) {
+  return LocalStorage();
+}
+
+@riverpod
 NetworkClient networkClient(Ref ref) {
   return NetworkClient();
 }
@@ -43,21 +49,20 @@ CategoryRemoteDataSource categoryRemoteDataSource(Ref ref) {
 
 @riverpod
 CartRemoteDataSource cartRemoteDataSource(Ref ref) {
-  return CartRemoteDataSource(client: ref.read(networkClientProvider));
+  return CartRemoteDataSource(
+    client: ref.read(networkClientProvider),
+    localStorage: ref.read(localStorageProvider),
+  );
 }
 
 @riverpod
 AuthRepository authRepository(Ref ref) {
-  return AuthRepositoryImpl(
-    dataSource: ref.read(authRemoteDataSourceProvider),
-  );
+  return AuthRepositoryImpl(dataSource: ref.read(authRemoteDataSourceProvider));
 }
 
 @riverpod
 CartRepository cartRepository(Ref ref) {
-  return CartRepositoryImpl(
-    dataSource: ref.read(cartRemoteDataSourceProvider),
-  );
+  return CartRepositoryImpl(dataSource: ref.read(cartRemoteDataSourceProvider));
 }
 
 @riverpod
@@ -88,16 +93,13 @@ GetAllCategoryUseCase getAllCategoryUseCase(Ref ref) {
 
 @riverpod
 GetAllProductsUseCase getAllProductsUseCase(Ref ref) {
-  return GetAllProductsUseCase(
-    repository: ref.read(productRepositoryProvider),
-  );
+  return GetAllProductsUseCase(repository: ref.read(productRepositoryProvider));
 }
 
 @riverpod
-GetCartItemsUseCase getCartItemsUseCase(Ref ref){
+GetCartItemsUseCase getCartItemsUseCase(Ref ref) {
   return GetCartItemsUseCase(cartRepository: ref.read(cartRepositoryProvider));
 }
-
 
 @riverpod
 GetProductDetailsUseCase getProductDetailsUseCase(Ref ref) {

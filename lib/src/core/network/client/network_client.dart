@@ -9,9 +9,9 @@ class NetworkClient {
   NetworkClient._private() {
     _dio = Dio()
       ..options.baseUrl = dotenv.get("BASE_URL")
-      ..options.connectTimeout = Duration(seconds: 15)
-      ..options.receiveTimeout = Duration(seconds: 15)
-      ..options.sendTimeout = Duration(seconds: 15);
+      ..options.connectTimeout = Duration(seconds: 5)
+      ..options.receiveTimeout = Duration(seconds: 5)
+      ..options.sendTimeout = Duration(seconds: 5);
 
     _dio.interceptors.add(AuthInterceptor(dio: _dio));
   }

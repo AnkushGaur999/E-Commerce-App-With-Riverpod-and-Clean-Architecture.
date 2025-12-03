@@ -241,7 +241,6 @@ class ProductDetailsScreen extends StatelessWidget {
           width: double.infinity,
           child: FilledButton.icon(
             style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(AppColors.primaryColor),
               padding: WidgetStatePropertyAll(EdgeInsets.all(14)),
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadiusGeometry.circular(16)

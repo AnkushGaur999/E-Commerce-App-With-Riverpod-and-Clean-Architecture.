@@ -9,6 +9,47 @@ part of 'providers.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
+@ProviderFor(localStorage)
+const localStorageProvider = LocalStorageProvider._();
+
+final class LocalStorageProvider
+    extends $FunctionalProvider<LocalStorage, LocalStorage, LocalStorage>
+    with $Provider<LocalStorage> {
+  const LocalStorageProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'localStorageProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$localStorageHash();
+
+  @$internal
+  @override
+  $ProviderElement<LocalStorage> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  LocalStorage create(Ref ref) {
+    return localStorage(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(LocalStorage value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<LocalStorage>(value),
+    );
+  }
+}
+
+String _$localStorageHash() => r'b8709aecca2c274bfc13030dcc039f14732b0918';
+
 @ProviderFor(networkClient)
 const networkClientProvider = NetworkClientProvider._();
 
@@ -240,7 +281,7 @@ final class CartRemoteDataSourceProvider
 }
 
 String _$cartRemoteDataSourceHash() =>
-    r'38354e2362320db4e48303f4e5cc6ba57bf8c8b1';
+    r'c51ee5b917bc0c850a24ca918684aacd417c17f2';
 
 @ProviderFor(authRepository)
 const authRepositoryProvider = AuthRepositoryProvider._();

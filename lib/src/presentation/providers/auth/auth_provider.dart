@@ -28,6 +28,9 @@ class Auth extends _$Auth {
         accessToken: response.data!.accessToken!,
         refreshToken: response.data!.refreshToken!,
       );
+
+      ref.read(localStorageProvider).setUser(response.data!);
+
       state = AuthState.loginSuccess(data: response.data!);
     } else {
       state = AuthState.loginError(message: response.error!);

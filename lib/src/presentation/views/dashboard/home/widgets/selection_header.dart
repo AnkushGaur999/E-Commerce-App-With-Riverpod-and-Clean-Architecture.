@@ -5,7 +5,9 @@ import 'package:plux/src/config/routes/app_routes.dart';
 class SectionHeader extends StatelessWidget {
   final String title;
 
-  const SectionHeader({super.key, required this.title});
+  final VoidCallback? onTap;
+
+  const SectionHeader({super.key, required this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +17,22 @@ class SectionHeader extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             TextButton(
-              onPressed: () => context.pushNamed(AppRoutes.allProducts),
-              child: const Text("See All",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87)),
-            )
+              onPressed:
+                  onTap ?? () => context.pushNamed(AppRoutes.allProducts),
+              child: Text(
+                "See All",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).textTheme.bodyLarge!.color,
+                ),
+              ),
+            ),
           ],
         ),
       ),

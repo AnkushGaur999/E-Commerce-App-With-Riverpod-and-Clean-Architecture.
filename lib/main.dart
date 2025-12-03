@@ -5,9 +5,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plux/src/config/routes/app_routes.dart';
 import 'package:plux/src/core/constants/app_colors.dart';
+import 'package:plux/src/core/storage/local_storage.dart';
+import 'package:plux/src/presentation/providers/theme/theme_provider.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+
+  await LocalStorage.init();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -16,29 +21,65 @@ void main() async {
   runApp(ProviderScope(child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeProvider);
+
     return MaterialApp.router(
       title: 'Plux',
+      themeMode: themeMode,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: AppColors.primaryColor,
+        brightness: Brightness.light,
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         textTheme: GoogleFonts.notoSansTextTheme(),
-        appBarTheme: AppBarTheme(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.primaryColor,
           foregroundColor: AppColors.white,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            minimumSize: WidgetStatePropertyAll(Size(172, 52)),
-            backgroundColor: WidgetStatePropertyAll<Color>(
+            minimumSize: const WidgetStatePropertyAll(Size(172, 52)),
+            backgroundColor: const WidgetStatePropertyAll<Color>(
               AppColors.primaryColor,
             ),
-            foregroundColor: WidgetStatePropertyAll<Color>(AppColors.white),
-            textStyle: WidgetStatePropertyAll<TextStyle>(
+            foregroundColor: const WidgetStatePropertyAll<Color>(AppColors.white),
+            textStyle: const WidgetStatePropertyAll<TextStyle>(
+              TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        primaryColor: AppColors.white,
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.darkPrimary,
+          brightness: Brightness.dark,
+        ),
+        textTheme: GoogleFonts.notoSansTextTheme(ThemeData.dark().textTheme),
+        scaffoldBackgroundColor: AppColors.darkBackground,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.darkSurface,
+          foregroundColor: AppColors.white,
+        ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            minimumSize: const WidgetStatePropertyAll(Size(172, 52)),
+            backgroundColor: const WidgetStatePropertyAll<Color>(
+              AppColors.darkPrimary,
+            ),
+            foregroundColor: const WidgetStatePropertyAll<Color>(AppColors.white),
+            textStyle: const WidgetStatePropertyAll<TextStyle>(
               TextStyle(
                 color: Colors.white,
                 fontSize: 16,

@@ -13,8 +13,8 @@ class CartScreen extends ConsumerStatefulWidget {
   ConsumerState<CartScreen> createState() => _CartScreenState();
 }
 
-class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAliveClientMixin {
-
+class _CartScreenState extends ConsumerState<CartScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -22,7 +22,6 @@ class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAlive
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      backgroundColor: const Color(0xffF6F7FB),
       appBar: AppBar(title: const Text("My Cart")),
       body: ref
           .watch(cartProvider)
@@ -44,7 +43,6 @@ class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAlive
                     ),
 
                     Card(
-                      color: Colors.grey.shade300,
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Column(
@@ -93,7 +91,7 @@ class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAlive
       margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -119,7 +117,7 @@ class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAlive
                     product.thumbnail!,
                     height: 70,
                     width: 70,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -232,7 +230,7 @@ class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAlive
     String title,
     num value, {
     bool isBold = false,
-    Color color = Colors.black,
+    Color? color,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -240,6 +238,7 @@ class _CartScreenState extends ConsumerState<CartScreen> with AutomaticKeepAlive
         Text(
           "$title:",
           style: TextStyle(
+            color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
             fontWeight: isBold ? FontWeight.w600 : FontWeight.normal,
           ),
         ),
