@@ -31,9 +31,9 @@ Plux is a modern E-commerce mobile application built with Flutter. It follows Cl
 |:-------------------------------------------------------:|:---------------------------------------------------------:|:---------------------------------------------------------:|
 | <img src="screenshots/products-page.png" width="200" /> | <img src="screenshots/search-products.png" width="200" /> | <img src="screenshots/product-details.png" width="200" /> |
 
-|                        Cart                         | | |
-|:---------------------------------------------------:|:-:|:-:|
-| <img src="screenshots/cart-page.png" width="200" /> | | |
+|                        Cart                         |                        Settings                         | |
+|:---------------------------------------------------:|:-------------------------------------------------------:|:-:|
+| <img src="screenshots/cart-page.png" width="200" /> | <img src="screenshots/settings-page.png" width="200" /> | |
 
 ## 🏗 Architecture
 
